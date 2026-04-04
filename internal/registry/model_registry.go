@@ -184,7 +184,7 @@ func LookupModelInfo(modelID string, provider ...string) *ModelInfo {
 		if models := GetStaticModelDefinitionsByChannel(p); models != nil {
 			for _, m := range models {
 				if m != nil && m.ID == modelID {
-					return cloneModelInfo(m)
+					return m // already cloned by GetStaticModelDefinitionsByChannel
 				}
 			}
 			return nil // provider has a catalog but model not in it — treat as user-defined
